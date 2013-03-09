@@ -40,7 +40,7 @@ Is equivalent to this C++ code:
         make_property(int, x, get_x, set_x, C);
     };
 
-And then you can `x` as if it was a public `int` member of the class C, but you will use transparently `get_x` and `set_x`.
+And then you can use `x` as if it was a public `int` member of the class C, but you will use transparently `get_x` and `set_x`.
 
     C c;
     std::cout << c.x << std::endl; // this prints "0"
