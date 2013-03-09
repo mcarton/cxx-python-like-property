@@ -1,9 +1,10 @@
 cxx-python-like-property
 ========================
 
-This an useless project to show that we can have [python-like properties](http://docs.python.org/3/library/functions.html#property) in C++[^cxx11].
+This an useless project to show that we can have [python-like properties](http://docs.python.org/3/library/functions.html#property) in C++ (this requires C++11, clang 3.1 and g++ 4.7.2 compile it fine).
 
 For example this python code:
+
     class C:
         def __init__(self):
             self._x = 0
@@ -21,6 +22,7 @@ For example this python code:
         x = property(getx, setx)
 
 Is equivalent to this C++ code:
+
     class C {
         int m_x = 0;
     
@@ -38,4 +40,3 @@ Is equivalent to this C++ code:
         make_property(int, x, get_x, set_x, C);
     };
 
-[^cxx11]: This requires C++11, clang 3.1 and g++ 4.7.2 compile it fine.
