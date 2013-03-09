@@ -1,7 +1,7 @@
 cxx-python-like-property
 ========================
 
-This an useless project to show that we can have (python-like properties)[http://docs.python.org/3/library/functions.html#property] in C++[^cxx11].
+This an useless project to show that we can have [python-like properties](http://docs.python.org/3/library/functions.html#property) in C++[^cxx11].
 
 For example this python code:
     class C:
