@@ -1,5 +1,4 @@
 #include <iosfwd>
-#include <type_traits>
 
 namespace py_property {
 template <typename T, typename Get, typename, typename That>
