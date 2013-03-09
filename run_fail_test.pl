@@ -1,7 +1,11 @@
 #!/usr/bin/perl
 
+# This script verifies that test whose file name begins with "fail" with the
+# expected error.
 use strict;
 use warnings;
+
+my $cxx = "g++";
 
 my $count = 0;
 my $err_count = 0;
@@ -9,7 +13,7 @@ my $err_count = 0;
 foreach my $file (<./test/fail_*>) {
     ++$count;
 
-    my $output = `g++ -std=c++11 -fsyntax-only $file 2>&1`;
+    my $output = `$cxx -std=c++11 -fsyntax-only $file 2>&1`;
 
     open(FILE, $file)
         or warn("Error: could not open $file."), ++$err_count, next;
