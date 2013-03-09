@@ -40,3 +40,12 @@ Is equivalent to this C++ code:
         make_property(int, x, get_x, set_x, C);
     };
 
+And then you can `x` as if it was a public `int` member of the class C, but you will use transparently `get_x` and `set_x`.
+
+    C c;
+    std::cout << c.x << std::endl; // this prints "0"
+    c.x = 42;
+    std::cout << c.x << std::endl; // this prints "42"
+    c.x = -12;
+    std::cout << c.x << std::endl; // this prints "42"
+
