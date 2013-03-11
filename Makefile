@@ -6,10 +6,10 @@ FLAGS= -std=c++11 -g \
 
 all: tests
 
-test/obj/test_string.o: test/test_string.cpp src/property.hpp
+test/obj/test_string.o: test/test_string.cpp src/python_like_property.hpp
 	$(CXX) $(FLAGS) -c test/test_string.cpp -o test/obj/test_string.o
 
-test/obj/test_int.o: test/test_int.cpp src/property.hpp
+test/obj/test_int.o: test/test_int.cpp src/python_like_property.hpp
 	$(CXX) $(FLAGS) -c test/test_int.cpp -o test/obj/test_int.o
 
 test/obj/main.o: test/main.cpp
