@@ -1,3 +1,6 @@
+#ifndef PYTHON_LIKE_PROPERTY_H
+#define PYTHON_LIKE_PROPERTY_H
+
 #include <iosfwd>
 
 namespace python_like_property {
@@ -149,4 +152,6 @@ std::basic_istream<CharT, Traits>& operator>>(
 #endif
 
 } // namespace python_like_property
+
+#endif
 
