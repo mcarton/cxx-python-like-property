@@ -1,5 +1,5 @@
 // error: no match for ‘operator=’ in ‘t.Test::cst = 3’
-#include "../src/property.hpp"
+#include "../src/python_like_property.hpp"
 
 class Test {
 public:

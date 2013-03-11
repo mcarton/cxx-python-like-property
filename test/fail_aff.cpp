@@ -1,5 +1,5 @@
 // error: invalid initialization of reference of type ‘int&’
-#include "../src/property.hpp"
+#include "../src/python_like_property.hpp"
 
 class Test {
 public:

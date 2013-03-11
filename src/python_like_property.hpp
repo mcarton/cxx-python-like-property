@@ -1,6 +1,6 @@
 #include <iosfwd>
 
-namespace py_property {
+namespace python_like_property {
 template <typename T, typename Get, typename, typename That>
 class property_helper;
 
@@ -29,7 +29,8 @@ private:
 
 template <typename T, typename Get, typename Set, typename That>
 inline constexpr
-auto operator*(const property_helper<T, Get, Set, That>& ph) -> decltype(*(T)ph) {
+auto operator*(const property_helper<T, Get, Set, That>& ph)
+-> decltype(*(T)ph) {
     return *(T)ph;
 }
 
@@ -50,27 +51,27 @@ public:
         return *this;
     }
 
-#define py_property_helper_decl_friend_opeq_(op)                       \
+#define python_like_property_helper_decl_friend_opeq_(op)              \
     template <typename TT, typename UU,                                \
               typename GGet, typename SSet, typename TThat>            \
     friend                                                             \
     property_helper<TT, GGet, SSet, TThat>& operator op                \
         (property_helper<TT, GGet, SSet, TThat>& ph, const UU& other)
 
-    py_property_helper_decl_friend_opeq_(+=);
-    py_property_helper_decl_friend_opeq_(-=);
-    py_property_helper_decl_friend_opeq_(*=);
-    py_property_helper_decl_friend_opeq_(/=);
-    py_property_helper_decl_friend_opeq_(%=);
-    py_property_helper_decl_friend_opeq_(&=);
-    py_property_helper_decl_friend_opeq_(|=);
-    py_property_helper_decl_friend_opeq_(^=);
-    py_property_helper_decl_friend_opeq_(>>=);
-    py_property_helper_decl_friend_opeq_(<<=);
+    python_like_property_helper_decl_friend_opeq_(+=);
+    python_like_property_helper_decl_friend_opeq_(-=);
+    python_like_property_helper_decl_friend_opeq_(*=);
+    python_like_property_helper_decl_friend_opeq_(/=);
+    python_like_property_helper_decl_friend_opeq_(%=);
+    python_like_property_helper_decl_friend_opeq_(&=);
+    python_like_property_helper_decl_friend_opeq_(|=);
+    python_like_property_helper_decl_friend_opeq_(^=);
+    python_like_property_helper_decl_friend_opeq_(>>=);
+    python_like_property_helper_decl_friend_opeq_(<<=);
 #undef property_helper_delc_friend_opeq_
 };
 
-#define py_property_helper_decl_opeq_(op)                                     \
+#define python_like_property_helper_decl_opeq_(op)                            \
 template <typename T, typename U, typename Get, typename Set, typename That>  \
 property_helper<T, Get, Set, That>& operator op                               \
     (property_helper<T, Get, Set, That>& ph, const U& other) {                \
@@ -78,16 +79,16 @@ property_helper<T, Get, Set, That>& operator op                               \
     return ph = (t op other);                                                 \
 }
 
-py_property_helper_decl_opeq_(+=)
-py_property_helper_decl_opeq_(-=)
-py_property_helper_decl_opeq_(*=)
-py_property_helper_decl_opeq_(/=)
-py_property_helper_decl_opeq_(%=)
-py_property_helper_decl_opeq_(&=)
-py_property_helper_decl_opeq_(|=)
-py_property_helper_decl_opeq_(^=)
-py_property_helper_decl_opeq_(>>=)
-py_property_helper_decl_opeq_(<<=)
+python_like_property_helper_decl_opeq_(+=)
+python_like_property_helper_decl_opeq_(-=)
+python_like_property_helper_decl_opeq_(*=)
+python_like_property_helper_decl_opeq_(/=)
+python_like_property_helper_decl_opeq_(%=)
+python_like_property_helper_decl_opeq_(&=)
+python_like_property_helper_decl_opeq_(|=)
+python_like_property_helper_decl_opeq_(^=)
+python_like_property_helper_decl_opeq_(>>=)
+python_like_property_helper_decl_opeq_(<<=)
 #undef property_helper_delc_opeq_
 
 template <typename T, typename Get, typename Set, typename That>
@@ -116,12 +117,13 @@ std::basic_istream<CharT, Traits>& operator>>(
 }
 
 #define make_property(Type, name, getter, setter, That)                      \
-  py_property::property_helper<Type, decltype(&That::getter),                \
+  python_like_property::property_helper<Type, decltype(&That::getter),       \
                         decltype(&That::setter), That>                       \
   name{&That::getter, &That::setter, *this}
 
 #define make_const_property(Type, name, getter, That)                        \
-  py_property::property_helper<Type, decltype(&That::getter), void, That>    \
+  python_like_property::property_helper<Type, decltype(&That::getter),       \
+                                        void, That>                          \
   name{&That::getter, *this}
 
 #if 0
@@ -146,5 +148,5 @@ std::basic_istream<CharT, Traits>& operator>>(
     (&ecltype(*this)::getter, &ecltype(*this)::setter, *this)
 #endif
 
-} // namespace py_property
+} // namespace python_like_property
 

@@ -1,5 +1,5 @@
 // error: use of deleted function
-#include "../src/property.hpp"
+#include "../src/python_like_property.hpp"
 
 class Test {
 public:

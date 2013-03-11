@@ -1,4 +1,4 @@
-#include "../src/property.hpp"
+#include "../src/python_like_property.hpp"
 
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>
