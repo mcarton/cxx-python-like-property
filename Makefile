@@ -6,6 +6,9 @@ FLAGS= -std=c++11 -g \
 
 all: tests
 
+test/obj/test_noncopyable.o: test/test_noncopyable.cpp src/python_like_property.hpp
+	$(CXX) $(FLAGS) -c test/test_noncopyable.cpp -o test/obj/test_noncopyable.o
+
 test/obj/test_string.o: test/test_string.cpp src/python_like_property.hpp
 	$(CXX) $(FLAGS) -c test/test_string.cpp -o test/obj/test_string.o
 
@@ -15,9 +18,11 @@ test/obj/test_int.o: test/test_int.cpp src/python_like_property.hpp
 test/obj/main.o: test/main.cpp
 	$(CXX) $(FLAGS) -c test/main.cpp -o test/obj/main.o
 
-test/tests: test/obj/main.o test/obj/test_int.o test/obj/test_string.o
+test/tests: test/obj/main.o test/obj/test_int.o test/obj/test_string.o test/obj/test_noncopyable.o 
 	$(CXX) test/obj/main.o \
-	       test/obj/test_int.o test/obj/test_string.o \
+	       test/obj/test_int.o \
+	       test/obj/test_string.o \
+	       test/obj/test_noncopyable.o \
 	      -lboost_unit_test_framework -g -o test/tests
 
 tests: test/tests
